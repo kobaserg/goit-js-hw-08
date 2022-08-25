@@ -23,7 +23,7 @@ const lightbox = new SimpleLightbox('.gallery a', {
   captionSelector: 'img',
   captionsData: 'alt',
   captionDelay: 250,
-  widthRatio: 0.7,
+  widthRatio: 0.8,
   heightRatio: 0.8,
   scrollZoomFactor: 0.1,
 });
