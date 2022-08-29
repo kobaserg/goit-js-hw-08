@@ -6,11 +6,11 @@ const inputSabmit = document.querySelector('button');
 
 let storageForm = { email: '', message: '' };
 
-let localStorageObject = localStorage.getItem(
-  'feedback-form-state',
-  JSON.stringify(storageForm)
+let loadingStorageForm = JSON.parse(
+  localStorage.getItem('feedback-form-state', storageForm)
 );
-let loadingStorageForm = JSON.parse(localStorageObject);
+
+console.log(loadingStorageForm);
 
 if (loadingStorageForm === null) {
   loadingStorageForm = { email: '', message: '' };
