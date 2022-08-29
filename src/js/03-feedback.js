@@ -10,17 +10,19 @@ let loadingStorageForm = JSON.parse(
   localStorage.getItem('feedback-form-state', storageForm)
 );
 
-console.log(loadingStorageForm);
-
 if (loadingStorageForm === null) {
   loadingStorageForm = { email: '', message: '' };
 }
+
+inputEmail.value = loadingStorageForm.email;
+inputMessage.value = loadingStorageForm.message;
 
 inputSabmit.addEventListener('click', onSubmitForm);
 inputEmail.addEventListener('input', throttle(onInputEmail, 500));
 inputMessage.addEventListener('input', throttle(onInputMessage, 500));
 
 function onSubmitForm(event) {
+  // Чтобы была видна консоль, без перезагрузки страницы
   event.preventDefault();
   console.log(
     `SUBMIT --> email : ${inputEmail.value}  message : ${inputMessage.value}`
@@ -29,8 +31,6 @@ function onSubmitForm(event) {
   inputEmail.value = '';
   inputMessage.value = '';
 }
-inputEmail.value = loadingStorageForm.email;
-inputMessage.value = loadingStorageForm.message;
 
 function memoryForm() {
   localStorage.setItem('feedback-form-state', JSON.stringify(storageForm));
