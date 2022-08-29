@@ -1,8 +1,9 @@
 let throttle = require('lodash.throttle');
 
+const form = document.querySelector('form');
+
 const inputEmail = document.querySelector('input');
 const inputMessage = document.querySelector('textarea');
-const inputSabmit = document.querySelector('button');
 
 let storageForm = { email: '', message: '' };
 
@@ -17,7 +18,7 @@ if (loadingStorageForm === null) {
 inputEmail.value = loadingStorageForm.email;
 inputMessage.value = loadingStorageForm.message;
 
-inputSabmit.addEventListener('click', onSubmitForm);
+form.addEventListener('submit', onSubmitForm);
 inputEmail.addEventListener('input', throttle(onInputEmail, 500));
 inputMessage.addEventListener('input', throttle(onInputMessage, 500));
 
@@ -27,9 +28,8 @@ function onSubmitForm(event) {
   console.log(
     `SUBMIT --> email : ${inputEmail.value}  message : ${inputMessage.value}`
   );
-  localStorage.clear('feedback-form-state');
-  inputEmail.value = '';
-  inputMessage.value = '';
+  localStorage.removeItem('feedback-form-state');
+  form.reset();
 }
 
 function memoryForm() {
