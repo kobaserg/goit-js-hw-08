@@ -13,6 +13,9 @@ function onPlay() {
   player.on('timeupdate', throttle(onUpdateTime, 1000));
 
   function onUpdateTime(time) {
-    localStorage.setItem('videoplayer-current-time', time.seconds);
+    console.log(time);
+    if (time !== null) {
+      localStorage.setItem('videoplayer-current-time', time.seconds);
+    }
   }
 }
